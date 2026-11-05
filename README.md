@@ -10,9 +10,9 @@
 
 | Nome | Matrícula | Usuário do GitHub |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Tacio Vinicio|2417743|  |
+| Jade Coimbra |2417845|  |
+| Jackeline Alves|2420429|  |
 
 ## O cenário
 
