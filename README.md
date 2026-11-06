@@ -13,6 +13,7 @@
 | Tacio Vinicio|2417743|TVPRpontoDev|
 | Jade Coimbra |2417845|  |
 | Jackeline Alves|2420429|jackelinealves27|
+|Jhemily Albuquerque|2421683|jhemilyalbuquerque|
 
 ## O cenário
 
