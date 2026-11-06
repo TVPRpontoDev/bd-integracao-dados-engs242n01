@@ -11,7 +11,7 @@
 | Nome | Matrícula | Usuário do GitHub |
 | --- | --- | --- |
 | Tacio Vinicio|2417743|TVPRpontoDev|
-| Jade Coimbra |2417845|  |
+| Jade Coimbra |2417845|Coimbra-Jade |
 | Jackeline Alves|2420429|jackelinealves27|
 |Jhemily Albuquerque|2421683|jhemilyalbuquerque|
 
