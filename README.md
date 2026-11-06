@@ -10,9 +10,9 @@
 
 | Nome | Matrícula | Usuário do GitHub |
 | --- | --- | --- |
-| Tacio Vinicio|2417743|  |
+| Tacio Vinicio|2417743|TVPRpontoDev|
 | Jade Coimbra |2417845|  |
-| Jackeline Alves|2420429|  |
+| Jackeline Alves|2420429|jac  |
 
 ## O cenário
 
