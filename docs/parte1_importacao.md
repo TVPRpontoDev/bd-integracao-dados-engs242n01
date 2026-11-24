@@ -65,8 +65,14 @@
 ## Erros encontrados no script de importação e como foram corrigidos
 
 | Erro | Efeito | Correção |
-| --- | --- | --- |
-|  |  |  |
+| :--- | :--- | :--- |
+| **Datas em formato serial numérico do Excel** | As colunas de data lidas via pandas contêm inteiros (ex: `45678`), fazendo a inserção falhar por tipo incompatível no banco de dados. | Criada a função `excel_para_data()`, que converte o número serial base 30/12/1899 para o formato padrão de data `yyyy-mm-dd`. |
+| **Divergência de nome da coluna (`idproduto` vs `produto_id`)** | Na aba `produtos_filial`, a leitura de `row["idproduto"]` gerava erro de chave inexistente (`KeyError`) se o banco ou planilha usasse a outra nomenclatura. | Feita a busca explícita com tratamento de espaços via `.strip()` mapeando a coluna de origem da planilha para a chave do banco. |
+| **Espaços extras nas colunas e valores de texto** | Nomes de cabeçalhos ou dados de texto contendo espaços no início/fim causavam falhas no `INSERT` ou duplicidade visual no banco. | Aplicados os métodos `df.columns.str.strip()` na leitura da aba e `str(valor).strip()` na conversão de cada parâmetro do `INSERT`. |
+| **Falha de chave duplicada na inserção (`UniqueViolation`)** | Se a planilha contiver registros repetidos ou a carga for reexecutada, o script é interrompido com erro de constraint. | Adicionada a instrução `ON CONFLICT (...) DO NOTHING` ao final dos comandos SQL de `INSERT` para ignorar registros duplicados. |
+| **Erros isolados cancelando toda a transação (`InFailedSqlTransaction`)** | Se uma linha falhar na inserção, o PostgreSQL bloqueia os comandos SQL subsequentes da mesma transação. | Adicionado o bloco `try-except` com `conn.rollback()` individual em cada iteração do loop antes de dar o `continue`. |
+| **Valores `NaN` / nulos gerando erro de tipo em campos numéricos e texto** | Valores vazios na planilha passavam como `NaN` do pandas, causando falha ao tentar converter para `int` ou `float`. | Aplicada a verificação `pd.notna(row[coluna])` com valores padrão (`None`, `0` ou `"00:00:00"`) para tratamento seguro dos nulos. |
+| **Cálculo manual de coluna derivada (`qtde_pendente`)** | A planilha de pedidos de compra não possuía a quantidade pendente calculada explicitamente. | Incluído o cálculo dinâmico no `VALUES`: `float(row["qtde_pedida"]) - float(row["qtde_entregue"])` para preencher o campo no banco. |
 
 ## Tratamentos aplicados aos dados
 
