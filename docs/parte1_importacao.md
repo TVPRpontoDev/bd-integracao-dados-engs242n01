@@ -1,18 +1,9 @@
 # Parte 1: Documentação do processo de importação
 
-## Ferramenta utilizada
-
 ## Estrutura da planilha
 
 | Aba | Coluna | Tipo | Observação |
 | --- | --- | --- | --- |
-### Ferramenta Utilizada
-* **SGBD / Ferramenta:** MySQL (gerenciado via DBeaver)
-
-### Estrutura dos Dados
-
-| Aba | Coluna | Tipo | Observação |
-| :--- | :--- | :--- | :--- |
 | `public_venda` | `venda_id` | `BIGINT` | Chave Primária (PK) |
 | `public_venda` | `data_emissao` | `DATE` | Data da venda (usada no filtro de Fev/2025) |
 | `public_venda` | `horariomov` | `VARCHAR(8)` | Horário do movimento (`HH:MM:SS`) |
@@ -54,6 +45,8 @@
 | `public_produtos_filial` | `idfornecedor` | `INT` | Preenchido automaticamente via TRIGGER |
 | `public_fornecedor` | `idfornecedor` | `VARCHAR(25)` | Chave Primária (PK) |
 | `public_fornecedor` | `razao_social` | `VARCHAR(255)` | Nome / Razão Social do fornecedor |
+### Ferramenta Utilizada
+* **SGBD / Ferramenta:** MySQL (gerenciado via DBeaver)
 
 ## Erros encontrados no DDL e como foram corrigidos
 
