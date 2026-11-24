@@ -78,12 +78,28 @@
 
 (conversão de tipos, validações, normalizações)
 
+- **Conversão de Tipos:**
+  - **Datas:** Conversão de números seriais do Excel para o formato de data nativo do banco (`YYYY-MM-DD`) usando a função `excel_para_data()`.
+  - **Campos Numéricos (`INT` / `FLOAT`):** Tratamento de colunas numéricas com `float()` e `int()`, tratando valores nulos do pandas (`NaN`) com fallbacks seguros (`0` ou `1`).
+  - **Strings:** Conversão explícita de identificadores e códigos para texto (`str()`).
+
+- **Normalizações:**
+  - **Sanitização de Texto (`strip`):** Remoção de espaços em branco antes e depois das strings em nomes de colunas (`df.columns.str.strip()`) e nos valores inseridos (`str(valor).strip()`).
+  - **Valores Padrão:** Garantia de valor preenchido em horários (`horariomov` padrão `"00:00:00"`) quando ausentes na planilha.
+
+- **Validações e Integridade:**
+  - **Cálculo Derivado:** Cálculo dinâmico do campo `qtde_pendente` no comando SQL via `qtde_pedida - qtde_entregue`.
+  - **Tratamento de Chaves Duplicadas:** Utilização da instrução `ON CONFLICT (...) DO NOTHING` com base nas chaves primárias para permitir reexecuções seguras sem duplicar dados.
+  - **Controle de Transação:** Isolamento de exceções com `try/except` e `conn.rollback()` por registro para evitar cancelamento em lote por erros individuais.
+
+---
+
 ## Conferência final
 
 | Tabela | Linhas na planilha | Linhas no banco |
-| --- | --- | --- |
-| fornecedor |  |  |
-| produtos_filial |  |  |
-| pedido_compra |  |  |
-| entradas_mercadoria |  |  |
-| venda |  |  |
+| :--- | :---: | :---: |
+| fornecedor | 20 | 20 |
+| produtos_filial | 20 | 20 |
+| pedido_compra | 29 | 29 |
+| entradas_mercadoria | 20 | 20 |
+| venda | 33 | 33 |
