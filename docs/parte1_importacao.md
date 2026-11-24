@@ -6,7 +6,7 @@
 
 | Aba | Coluna | Tipo | Observação |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| public.venda |horariomov, produto_id  |Sintaxe / Incompatibilidade  |Uso de sintaxe nativa do PostgreSQL (::character varying, int8, float8) no MySQL.  |
 
 ## Erros encontrados no DDL e como foram corrigidos
 
