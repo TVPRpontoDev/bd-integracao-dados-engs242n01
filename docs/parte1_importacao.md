@@ -52,8 +52,6 @@
 
 | Tabela | Erro | Correção |
 | --- | --- | --- |
-| Tabela | Erro | Correção |
-| :--- | :--- | :--- |
 | `public.venda` | Uso de tipos/sintaxe do PostgreSQL (`int8`, `float8`, `::character varying`). | Substituir por tipos nativos do MySQL (`BIGINT`, `DOUBLE`) e remover o cast de texto. |
 | `public.entradas_mercadoria` | A `PRIMARY KEY` faz referência à coluna `ordem_compra`, que não foi declarada. | Adicionar a coluna `ordem_compra DOUBLE NOT NULL` à tabela. |
 | `public.produtos_filial` | Falta de vírgula após o campo `idfonecedor`, antes do `CONSTRAINT`. | Adicionar a vírgula para separar a coluna da instrução de chave primária. |
